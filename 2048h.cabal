@@ -1,0 +1,18 @@
+name:                2048h
+version:             1.0.0.0
+synopsis:            2048 game clone with Curses UI
+homepage:            http://www.arthuryip.com/2048h
+license:             MIT
+license-file:        LICENSE
+author:              Arthur Yip
+maintainer:          arthuryip@arthuryip.com
+-- copyright:           
+category:            Game
+build-type:          Simple
+cabal-version:       >= 1.8
+
+executable 2048h
+  main-is:             Main.hs
+  other-modules:       ConsoleUI, Game
+  hs-source-dirs:      src
+  build-depends:       base == 4.6.*, hscurses >= 1.4, random >= 1.0
