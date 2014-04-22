@@ -25,7 +25,20 @@ cellWidth = 7
 cellHeight = 4
 
 drawCell :: Int -> Int -> Int -> IO ()
-drawCell x y num = do
+drawCell x y num = if num == 0
+                     then drawBlank x y
+                     else drawNum x y num
+
+drawBlank :: Int -> Int -> IO ()
+drawBlank x y = do
+  style <- basicStyle
+  setStyle style
+  mvWAddStr stdScr ((y * cellHeight) + boardY) ((x * cellWidth) + boardX) "      "
+  mvWAddStr stdScr ((y * cellHeight) + boardY + 1) ((x * cellWidth) + boardX) "      "
+  mvWAddStr stdScr ((y * cellHeight) + boardY + 2) ((x * cellWidth) + boardX) "      "
+
+drawNum :: Int -> Int -> Int -> IO ()
+drawNum x y num = do
   style <- cellStyle
   setStyle style
   mvWAddStr stdScr ((y * cellHeight) + boardY) ((x * cellWidth) + boardX) "      "
